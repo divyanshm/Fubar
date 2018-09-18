@@ -55,10 +55,6 @@
                         {
                             "name": "WEBSITES_ENABLE_APP_SERVICE_STORAGE",
                             "value": "false"
-                        },
-                        {
-                            "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
-                            "value": "[reference(resourceId('microsoft.insights/components/', parameters('webAppName')), '2015-05-01').InstrumentationKey]"
                         }
                     ],
                     "appCommandLine": "[parameters('startupCommand')]",
@@ -72,8 +68,7 @@
                 "[concat('hidden-related:', '/subscriptions/', subscription().subscriptionId,'/resourcegroups/', resourceGroup().name, '/providers/Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]": "empty"
             },
             "dependsOn": [
-                "[concat('Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]",
-                "[resourceId('microsoft.insights/components/', parameters('webAppName'))]"
+                "[concat('Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]"
             ]
         },
         {
